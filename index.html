@@ -1,31 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Proposed Her</title>
-
-  <link rel="stylesheet" href="./style.css" />
+  <meta charset="UTF-8">
+  <title>Greetings for Loved Ones</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
+      margin: 0;
+      padding: 50px;
+    }
+    .page {
+      display: none;
+    }
+    .active {
+      display: block;
+    }
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 12px 25px;
+      margin: 10px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    button:hover {
+      transform: scale(1.1);
+    }
+    .yes {
+      background-color: #4CAF50;
+      color: white;
+    }
+    .no {
+      background-color: #f44336;
+      color: white;
+      position: relative;
+    }
+    .bounce {
+      animation: bounce 1s infinite;
+    }
+    @keyframes bounce {
+      0%   { transform: translate(0, 0); }
+      25%  { transform: translate(50px, -20px); }
+      50%  { transform: translate(-50px, 20px); }
+      75%  { transform: translate(30px, -10px); }
+      100% { transform: translate(0, 0); }
+    }
+  </style>
 </head>
-
 <body>
-  <div class="container">
-    <div class="tenor-gif-embed" data-postid="22885016" data-share-method="host" data-aspect-ratio="1.04918"
-      data-width="100%">
-      <a href="https://tenor.com/view/manja-gif-22885016">Manja Sticker</a>from
-      <a href="https://tenor.com/search/manja-stickers">Manja Stickers</a>
-    </div>
-    
-    <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
-    <h1>Do you love me? 🤗</h1>
-    <p>Anup is all yours Motuu</p>
 
-    <div class="btn">
-      <a href="yes.html">Yes</a>
-      <a href="no1.html">No</a>
-    </div>
+  <!-- Page 1 -->
+  <div id="page1" class="page active">
+    <h1>💖 Tum muzse pyar karte ke nahi karte?</h1>
+    <button class="yes" onclick="nextPage(4)">Ha 😊</button>
+    <button class="no" onclick="nextPage(2)">Nahi 🙁</button>
   </div>
-</body>
 
+  <!-- Page 2 -->
+  <div id="page2" class="page">
+    <h1>🤔 Ekbar aur sochlo?</h1>
+    <button class="yes" onclick="nextPage(4)">Ha 😍</button>
+    <button class="no" onclick="nextPage(3)">Nahi 😒</button>
+  </div>
+
+  <!-- Page 3 -->
+  <div id="page3" class="page">
+    <h1>🙄 Kitna bhav khaoge? Maan bhi jao na.</h1>
+    <button class="yes" onclick="nextPage(4)">Ha ❤️</button>
+    <button class="no bounce">Nahi 😜</button>
+  </div>
+
+  <!-- Page 4 -->
+  <div id="page4" class="page">
+    <h1>🌹 Mai janta hun, thoda tum bhi muze pasand karte ho.</h1>
+    <h2>✨ Blessings Motuu!! ✨</h2>
+    <p style="font-size:40px;">🎉💞🥳</p>
+  </div>
+
+  <script>
+    function nextPage(pageNumber) {
+      // Hide all pages
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      // Show selected page
+      document.getElementById('page' + pageNumber).classList.add('active');
+    }
+
+    // Disable "Nahi" button on Page 3
+    document.addEventListener("DOMContentLoaded", () => {
+      const noBtn = document.querySelector("#page3 .no");
+      noBtn.addEventListener("click", (e) => {
+        e.preventDefault(); // prevent action
+        alert("😆 Arre! Nahi button pakadna mushkil hai!");
+      });
+    });
+  </script>
+
+</body>
 </html>
